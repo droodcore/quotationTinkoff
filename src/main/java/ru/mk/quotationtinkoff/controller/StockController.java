@@ -2,6 +2,8 @@ package ru.mk.quotationtinkoff.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+import ru.mk.quotationtinkoff.FigisDto;
+import ru.mk.quotationtinkoff.dto.StockPricesDto;
 import ru.mk.quotationtinkoff.dto.StocksDto;
 import ru.mk.quotationtinkoff.dto.TickersDto;
 import ru.mk.quotationtinkoff.model.Stock;
@@ -19,8 +21,13 @@ public class StockController {
         return stockService.getStockByTicker(ticker);
     }
 
-    @PostMapping("/getStocksByTicker")
+    @PostMapping("/stocks")
     public StocksDto getStocksByTickers(@RequestBody TickersDto tickersDto) {
        return stockService.getStocksByTickers(tickersDto);
+    }
+
+    @PostMapping("/prices")
+    public StockPricesDto getPrices(@RequestBody FigisDto figisDto) {
+        return stockService.getStockPrices(figisDto);
     }
 }
